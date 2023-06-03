@@ -1,6 +1,13 @@
 fastapi
 uvicorn
 pydantic
-pickle
-scikit-learn
+keras
+tensorflow
 numpy
+gunicorn
+uvloop
+pyjwt
+httptools
+pandas
+datetime
+nltk
