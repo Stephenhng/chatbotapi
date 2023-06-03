@@ -11,6 +11,7 @@ import os
 from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
+from nltk.corpus import wordnet
 
 # localNLTK = "/nltk_data"
 # if os.path.isdir('/nltk_data'):
@@ -62,6 +63,9 @@ model = load_model('chatbot.h5')
 @app.get('/')
 def index():
     return {'message': 'This is the homepage of the API '}
+
+def is_good_word(sentence: str):
+    wordnet.ensure_loaded()
 
 def clean_up_sentence(sentence: str):
     sentence_words = nltk.word_tokenize(sentence)
