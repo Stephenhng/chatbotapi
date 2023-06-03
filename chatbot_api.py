@@ -7,6 +7,7 @@ import json
 import nltk
 import numpy as np
 import random
+import os
 from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
