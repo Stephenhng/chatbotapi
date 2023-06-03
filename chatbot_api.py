@@ -108,8 +108,8 @@ def get_cat(sentence: str):
 
     if tag == 'datetime':
         return {'response': now.strftime("%A \n%d %B %Y \n%H:%M:%S")}
-
-    return {'response': res}
+    else:
+        return {'response': res}
 
 
 if __name__ == '__main__':
