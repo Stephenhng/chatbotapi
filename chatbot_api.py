@@ -11,6 +11,17 @@ from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
 
+localNLTK = "/nltk_data"
+if os.path.isdir('/nltk_data'):
+    if localNLTK not in nltk.data.path:
+        nltk.data.path.append(localNLTK)
+else:
+    from zipfile import ZipFile
+    with ZipFile('nltk_data.zip', 'r') as zipObj:
+        zipObj.extractall(localNLTK)
+    if localNLTK not in nltk.data.path:
+        nltk.data.path.append(localNLTK)
+
 lemmatizer = WordNetLemmatizer()
 intents = json.loads(open('intents.json').read())
 description_intents = json.loads(open('description_intents.json').read())
