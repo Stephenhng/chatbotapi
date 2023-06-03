@@ -12,3 +12,5 @@ httptools
 pandas
 datetime
 nltk
+kivy
+pyjnius
