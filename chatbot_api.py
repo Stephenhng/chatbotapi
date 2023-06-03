@@ -9,6 +9,7 @@ import numpy as np
 import random
 from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
+from keras.models import load_model
 
 lemmatizer = WordNetLemmatizer()
 intents = json.loads(open('intents.json').read())
@@ -38,10 +39,8 @@ app.add_middleware(
 class Massage(BaseModel):
     sentence: str
 
-
-
-with open("", "rb") as f:
-    model = pickle.load(f)
+        
+model = load_model('chatbot.h5')
 
 
 @app.get('/')
