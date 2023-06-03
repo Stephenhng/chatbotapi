@@ -13,16 +13,6 @@ from nltk.stem import WordNetLemmatizer
 from model import TensorFlowModel
 from nltk.corpus import wordnet
 
-# localNLTK = "/nltk_data"
-# if os.path.isdir('/nltk_data'):
-#     if localNLTK not in nltk.data.path:
-#         nltk.data.path.append(localNLTK)
-# else:
-#     from zipfile import ZipFile
-#     with ZipFile('nltk_data.zip', 'r') as zipObj:
-#         zipObj.extractall(localNLTK)
-#     if localNLTK not in nltk.data.path:
-#         nltk.data.path.append(localNLTK)
 nltk.download("punkt")
 nltk.download("wordnet")
 
@@ -130,6 +120,10 @@ def get_cat(sentence: str):
 
     if tag == 'datetime':
         return {'response': now.strftime("%A \n%d %B %Y \n%H:%M:%S")}
+    elif len(sentence) == 0 or tag != ints[0]['intent']:
+        return {'response': "What are you going to ask?"}
+    elif tag == 'goodbye':
+        return {'response': res + "You can provide us feedback: https://docs.google.com/forms/d/e/1FAIpQLScpxmn2ZjA4YlngPctl9sSXLyOReiJmf28nNj-RgGjgSusEgg/viewform?usp=sf_link"}
     else:
         return {'response': res}
 
