@@ -10,6 +10,9 @@ import random
 from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 
+nltk.download('punkt', download_dir='/nltk_data')
+nltk.download('wordnet', download_dir='/nltk_data')
+
 lemmatizer = WordNetLemmatizer()
 intents = json.loads(open('intents.json').read())
 description_intents = json.loads(open('description_intents.json').read())
