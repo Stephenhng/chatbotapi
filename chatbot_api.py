@@ -12,7 +12,6 @@ from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 from model import TensorFlowModel
 from nltk.corpus import wordnet
-from starlette.responses import HTMLResponse
 
 nltk.download("punkt")
 nltk.download("wordnet")
@@ -125,9 +124,8 @@ def get_cat(sentence: str):
         return {'response': "What are you going to ask?"}
     elif tag == 'feedback':
         url = "https://docs.google.com/forms/d/e/1FAIpQLScpxmn2ZjA4YlngPctl9sSXLyOReiJmf28nNj-RgGjgSusEgg/viewform?usp=sf_link"
-        res = "Thank you for your feedback!\nProvide feedback by clicking the link below:\n"
-        html_content = f'{res}<a href="{url}">{url}</a>'
-        return HTMLResponse(content=html_content)
+        resp = "Thank you for your feedback!\nProvide feedback by clicking the link below:\n"
+        return {'response': f'{resp}<a href="{url}">{url}</a>'}
     else:
         return {'response': res}
 
