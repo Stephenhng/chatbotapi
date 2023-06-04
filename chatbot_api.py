@@ -125,7 +125,7 @@ def get_cat(sentence: str):
         return {'response': "What are you going to ask?"}
     elif tag == 'feedback':
         url = "https://docs.google.com/forms/d/e/1FAIpQLScpxmn2ZjA4YlngPctl9sSXLyOReiJmf28nNj-RgGjgSusEgg/viewform?usp=sf_link"
-        return RedirectResponse(url=url)
+        return {'response': res + f"{url}"}
     else:
         return {'response': res}
 
