@@ -123,9 +123,9 @@ def get_cat(sentence: str):
         return {'response': now.strftime("%A \n%d %B %Y \n%H:%M:%S")}
     elif len(sentence) == 0 or tag != ints[0]['intent']:
         return {'response': "What are you going to ask?"}
-    elif tag == 'goodbye':
+    elif tag == 'feedback':
         url = "https://docs.google.com/forms/d/e/1FAIpQLScpxmn2ZjA4YlngPctl9sSXLyOReiJmf28nNj-RgGjgSusEgg/viewform?usp=sf_link"
-        return {'response': res + RedirectResponse(url=url)}
+        return RedirectResponse(url=url)
     else:
         return {'response': res}
 
