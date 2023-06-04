@@ -123,9 +123,8 @@ def get_cat(sentence: str):
     elif len(sentence) == 0 or tag != ints[0]['intent']:
         return {'response': "What are you going to ask?"}
     elif tag == 'feedback':
-        url = "https://docs.google.com/forms/d/e/1FAIpQLScpxmn2ZjA4YlngPctl9sSXLyOReiJmf28nNj-RgGjgSusEgg/viewform?usp=sf_link"
         resp = "Thank you for your feedback!\nProvide feedback by clicking the link below:\n"
-        return {'response': f'{resp}<a href="{url}">{url}</a>'}
+        return {'response': resp}
     else:
         return {'response': res}
 
