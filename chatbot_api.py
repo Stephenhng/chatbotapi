@@ -123,7 +123,7 @@ def get_cat(sentence: str):
     elif len(sentence) == 0 or tag != ints[0]['intent']:
         return {'response': "What are you going to ask?"}
     elif tag == 'feedback':
-        resp = "Thank you for your feedback!\nProvide feedback by clicking the link below:\n"
+        resp = "Thank you for your feedback!\nProvide feedback by clicking the link above.\n"
         return {'response': resp}
     else:
         return {'response': res}
