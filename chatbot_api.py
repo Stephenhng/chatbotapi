@@ -8,6 +8,7 @@ import nltk
 import numpy as np
 import random
 import os
+import pytz
 from starlette.middleware.cors import CORSMiddleware
 from nltk.stem import WordNetLemmatizer
 from model import TensorFlowModel
@@ -24,7 +25,7 @@ precaution_intents = json.loads(open('precaution_intents.json').read())
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 
-now = datetime.now()
+now = datetime.now(pytz.timezone('Asia/Kuala_Lumpur'))
 
 app = FastAPI()
 
@@ -119,7 +120,7 @@ def get_cat(sentence: str):
     tag = ints[0]['intent']
 
     if tag == 'datetime':
-        return {'response': now.strftime("%A \n%d %B %Y \n%H:%M:%S")}
+        return {'response': now}
     elif len(sentence) == 0 or tag != ints[0]['intent']:
         return {'response': "What are you going to ask?"}
     elif tag == 'feedback':
